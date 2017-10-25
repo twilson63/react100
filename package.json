@@ -1,0 +1,12 @@
+{
+  "name": "react100",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {},
+  "license": "MIT",
+  "dependencies": {
+    "adventure": "^2.11.0",
+    "puppeteer": "^0.12.0"
+  },
+  "bin": "runner.js"
+}
