@@ -19,6 +19,8 @@ The value prop reads from the state and the onChange prop sets the
 state. This will trigger a change event every time a new character is
 typed in the input.
 
+create a new file called 'wish-list.js'
+
     import React from 'react'
 
     function WishList(props, context) {
@@ -60,7 +62,7 @@ typed in the input.
     export default WishList
 
 
-Now add this component to the index.js file
+Now add this component to the 'index.js' file
 
 and run verify when ready
 
@@ -82,7 +84,12 @@ function verify(args, cb) {
     const page = await browser.newPage()
     await page.goto('http://localhost:8080')
     const output = await page.evaluate(() => {
-      document.querySelector('input').value = 'FooBar'
+      var element = document.querySelector('input')
+      element.value = 'FooBar'
+      var event = new Event('change', { bubbles: true })
+      event.simulated = true
+      element.dispatchEvent(event)
+
       document.querySelector('button#add-wish').click()
 
       return document.querySelector('ul').children
