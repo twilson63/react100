@@ -18,8 +18,6 @@ add the below code to the file.
 
     function Clock(props, context) {
       const instance = new React.Component(props, context)
-      instance.props = props
-      instance.context = context
 
       instance.render = function() {
         return <h1>This will be a clock</h1>
@@ -73,8 +71,6 @@ So our full clock component code base should like this:
 
     function Clock(props, context) {
       const instance = new React.Component(props, context)
-      instance.props = props
-      instance.context = context
 
       instance.componentDidMount = function() {
         setInterval(() => this.setState({ time: new Date() }), 1000)
@@ -129,9 +125,11 @@ function verify(args, cb) {
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
     await page.goto('http://localhost:8080')
-    const output = await page.evaluate(() => {
-      return document.querySelector('div > div').innerText
-    })
+    const output = await page
+      .evaluate(() => {
+        return document.querySelector('div > div').innerText
+      })
+      .catch(err => '')
 
     if (output.indexOf(new Date().toISOString().slice(0, 10)) > -1) {
       cb(true)

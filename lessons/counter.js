@@ -73,10 +73,12 @@ function verify(args, cb) {
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
     await page.goto('http://localhost:8080')
-    const output = await page.evaluate(() => {
-      document.querySelector('button#inc').click()
-      return document.querySelector('p').innerText
-    })
+    const output = await page
+      .evaluate(() => {
+        document.querySelector('button#inc').click()
+        return document.querySelector('p').innerText
+      })
+      .catch(err => '0')
     if (output === '1') {
       cb(true)
     } else {

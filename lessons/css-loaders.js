@@ -130,9 +130,11 @@ function verify(args, cb) {
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
     await page.goto('http://localhost:8080')
-    const output = await page.evaluate(() => {
-      return document.querySelector('div > div').className
-    })
+    const output = await page
+      .evaluate(() => {
+        return document.querySelector('div > div').className
+      })
+      .catch(err => '')
     if (output === 'pa4 red') {
       cb(true)
     } else {
