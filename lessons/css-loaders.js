@@ -25,7 +25,7 @@ and we can use these classes in our component
 
     function MyComponent (props) {
       return (
-        <div className="pa4 red">{props.title}</div>
+        <div className="pa4 red">Hello World</div>
       )
     }
 
