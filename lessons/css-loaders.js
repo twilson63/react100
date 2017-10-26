@@ -119,10 +119,13 @@ your app.
 `
 
 module.exports = function() {
-  return problem, verify
+  return {
+    problem,
+    verify
+  }
 }
 
-function verify() {
+function verify(args, cb) {
   ;(async () => {
     const browser = await puppeteer.launch()
     const page = await browser.newPage()

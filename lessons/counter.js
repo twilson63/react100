@@ -68,7 +68,7 @@ module.exports = function() {
   }
 }
 
-function verify() {
+function verify(args, cb) {
   ;(async () => {
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
