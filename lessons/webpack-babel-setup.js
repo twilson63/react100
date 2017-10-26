@@ -29,11 +29,13 @@ move index.js to the src directory
 
 add webpack to the project
 
-  yarn add webpack webpack-dev-server html-webpack-plugin --dev
+  yarn add webpack webpack-dev-server \
+    html-webpack-plugin --dev
 
 add babel to the project
 
-  yarn babel-loader babel-core babel-preset-env babel-preset-react --dev
+  yarn add babel-loader babel-core \
+    babel-preset-env babel-preset-react --dev
 
 create a webpack config
 
@@ -104,7 +106,8 @@ Lets modify the index.js file in the src directory
     import React from 'react'
     import { render } from 'react-dom'
 
-    render(<h1>Hello World</h1>, document.getElementById('root'))
+    render(<h1>Hello World</h1>,
+      document.getElementById('root'))
 
 Ok, now lets run our app:
 

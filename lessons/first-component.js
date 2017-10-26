@@ -47,11 +47,7 @@ module.exports = function() {
   }
 }
 
-function _if(cond, success, failure) {
-  return cond ? success() : failure()
-}
-
-function verify() {
+function verify(args, cb) {
   ;(async () => {
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
@@ -60,7 +56,11 @@ function verify() {
       return document.querySelector('div').innerText
     })
 
-    _if(output === 'My Component', () => cb(true), () => cb(false))
+    if (output === 'My Component') {
+      cb(true)
+    } else {
+      cb(false)
+    }
 
     await browser.close()
   })()
